@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Applause - HTML presentations powered by AngularJS</title>
+    <meta name="description" content="HTML presentations powered by Angular JS">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css assets/styles/applause.css -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/theme/default.css">
+    <!-- Chrome print bug. Credits to @hakimel http://goo.gl/rGoUvj -->
+    <script>
+      if( window.location.search.match(/pdf/gi) ) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'assets/styles/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+    </script>
+  </head>
+  <body ng-app="applauseApp" ng-keyup="keyup($event)">
+
+    <div id="presentation" ng-controller="DeckCtrl" ng-cloak>
+
+      <goto class="ph"></goto>
+
+      <div class="container">
+
+        <!-- =========== SLIDE =========== -->
+
+        <slide class="vert-align blue-bg cover" bg-img="polymer.svg">
+          <h1><span>POLYMER HACK UP</span><br>31/01/2015</h1>
+        </slide>
+
+        <slide class="grey-lego">
+          <h2>~ whoami</h2>
+          <h3>Maurizio Mangione<br>@granze</h3>
+          <table class="center who">
+            <tr>
+              <td class="logo"><img src="assets/theme/images/gild.svg" height="200"></td>
+              <td class="logo"><img src="assets/theme/images/mijs2.jpg" height="200"></td>
+            </tr>
+            <tr>
+              <td valign="top"><h4>Lead Frontend Developer</h4></td>
+              <td valign="top"><h4>Milano JS<br>Founder</h4></td>
+            </tr>
+          </table>
+        </slide>
+
+        <slide class="vert-align blue-bg">
+          <h2>Web components?</h2>
+        </slide>
+
+        <slide class="vert-align grey-lego">
+          <div class="abs-center">
+            <ul class="wcomps">
+              <li><img src="assets/theme/images/icon-customelements.png">Custom Elements</li>
+              <li><img src="assets/theme/images/icon-htmlimports.png">HTML imports</li>
+              <li><img src="assets/theme/images/icon-shadowdom.png">Shadow DOM</li>
+              <li><img src="assets/theme/images/icon-templates.png">Templates</li>
+            </ul>
+          </div>
+        </slide>
+
+        <slide>
+          <h2 class="spec ce">Custom elements</h2>
+          <h3 class="abs-center">Create new HTML elements</h3>
+        </slide>
+
+
+        <slide>
+          <h2 class="spec ce">Custom elements</h2>
+
+          <div prism class="language-markup">
+  &lt;tabs&gt;
+    &lt;tab&gt;tab 1&lt;/tab&gt;
+    &lt;tab&gt;tab 2&lt;/tab&gt;
+    &lt;tab&gt;tab 3&lt;/tab&gt;
+  &lt;/tabs&gt;
+          </div>
+        </slide>
+
+        <slide>
+          <h2 class="spec hi">HTML imports</h2>
+          <h3 class="abs-center">Load custom element definitions and resources</h3>
+        </slide>
+
+        <slide>
+          <h2 class="spec hi">HTML imports</h2>
+            <div prism class="language-markup">
+  &lt;link rel="import" href="custom.html"&gt;
+            </div>
+        </slide>
+
+        <slide>
+          <h2 class="spec sd">Shadow DOM</h2>
+          <h3 class="abs-center">Scoped CSS + encapsulated markup</h3>
+        </slide>
+
+        <slide>
+          <h2 class="spec sd">Shadow DOM</h2>
+          <img class="box-curl" src="assets/theme/images/shadowdom-code.png" style="width: 100%;">
+        </slide>
+
+
+        <slide>
+          <h2 class="spec ht">Templates</h2>
+          <h3 class="abs-center">Native templating in the browser</h3>
+        </slide>
+
+
+        <slide>
+          <h2 class="spec ht">Templates</h2>
+          <div prism class="language-markup">
+  &lt;template&gt;
+    &lt;h1&gt;Hey there!&lt;/h1&gt;
+
+    &lt;img src="xxx.jpg" /&gt;
+
+    &lt;script&gt;
+      alert('whoooo!');
+    &lt;/script&gt;
+  &lt;/template&gt;
+          </div>
+        </slide>
+
+
+        <slide class="vert-align blue-bg">
+          <h2>Special features</h2>
+        </slide>
+
+        <slide>
+          <h2>Data binding</h2>
+          <div prism class="language-markup">
+  &lt;polymer-element name="user-group"&gt;
+    &lt;template&gt;
+      This is the &#123;&#123;technology&#125; &#125; user group.
+    &lt;/template&gt;
+    &lt;script&gt;
+      Polymer('user-group', {
+        ready: function() {
+          this.technology = 'Javascript';
+        }
+      });
+    &lt;/script&gt;
+  &lt;/polymer-element&gt;
+
+          </div>
+        </slide>
+
+        <slide>
+          <h2>Declarative event mapping</h2>
+
+          <div prism class="language-markup">
+  &lt;polymer-element name=&quot;g-cool&quot;&gt;
+    &lt;template&gt;
+      &lt;button on-click=&quot;&#123;&#123;buttonClick&#125; &#125;&quot;&gt;&lt;/button&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+      Polymer({
+        buttonClick: function(event, detail, sender) { ... }
+      });
+    &lt;/script&gt;
+  &lt;/polymer-element&gt;
+          </div>
+        </slide>
+
+        <slide>
+          <h2>Extending other elements</h2>
+          <div prism class="language-markup">
+  &lt;polymer-element name=&quot;my-label&quot; noscript&gt;
+    &lt;template&gt;
+      &lt;span&gt;&lt;content&gt;&lt;/content&gt;&lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/polymer-element&gt;
+
+  &lt;polymer-element name=&quot;my-superlabel&quot; extends=&quot;my-label&quot; noscript&gt;
+    &lt;template&gt;
+      &lt;span&gt;
+        &lt;i&gt;&#9733;&lt;/i&gt;&lt;shadow&gt;&lt;/shadow&gt;
+      &lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/polymer-element&gt;
+
+  &lt;my-label&gt;Hello!&lt;/my-label&gt; // Hello!"
+  &lt;my-superlabel&gt;Hello!&lt;/my-superlabel&gt; // "&#9733; Hello!"
+          </div>
+        </slide>
+
+        <slide>
+          <h2>Observing properties</h2>
+          <div prism class="language-markup">
+  &lt;polymer-element name=&quot;g-cool&quot; attributes=&quot;better best&quot;&gt;
+    &lt;script&gt;
+      Polymer({
+        better: '',
+        best: '',
+        betterChanged: function(oldValue, newValue) {
+          ...
+        },
+        bestChanged: function(oldValue, newValue) {
+          ...
+        }
+      });
+    &lt;/script&gt;
+  &lt;/polymer-element&gt;
+          </div>
+        </slide>
+
+
+        <slide class="vert-align blue-bg">
+          <h2>Tools</h2>
+        </slide>
+
+        <slide>
+          <h2>Yeoman</h2>
+          <img class="center" src="assets/theme/images/generator-polymer.png" alt=""/>
+          <code class="centered inline" style="width: 400px;">npm install -g generator-polymer</code>
+        </slide>
+
+        <slide>
+          <h2>Bower</h2>
+          <img class="center" src="assets/theme/images/bower.png" width="300px" alt=""/>
+          <code class="centered inline" style="width: 400px;">bower install Polymer/core-ajax</code>
+        </slide>
+
+        <slide>
+          <h2>Vulcanize</h2>
+          <table class="tools-logo">
+            <tr>
+              <td>
+                <img class="center" src="assets/theme/images/npm.png" alt=""/>
+              </td>
+              <td>
+                <img class="center" src="assets/theme/images/gulp.png" alt=""/>
+              </td>
+              <td>
+                <img class="center" src="assets/theme/images/grunt.png" alt=""/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code class="centered inline">npm install -g vulcanize</code>
+              </td>
+              <td>
+                <code class="centered inline">npm install -D gulp-vulcanize</code>
+              </td>
+              <td>
+                <code class="centered inline">npm install -D grunt-vulcanize</code>
+              </td>
+            </tr>
+          </table>
+        </slide>
+
+        <slide class="vert-align blue-bg">
+          <h2>Useful components</h2>
+        </slide>
+
+        <slide>
+          <ul class="abs-center big-list">
+            <li>Google web components</li>
+            <li>Paper elements</li>
+            <li>Core elements</li>
+          </ul>
+        </slide>
+
+        <slide class="vert-align blue-bg">
+          <h2>Have fun!</h2>
+        </slide>
+
+        <!-- =========== /SLIDE =========== -->
+
+      </div>
+
+      <flip-clock></flip-clock>
+
+      <progress-bar class="ph" ng-show="{{isProgressBarVisible}}"></progress-bar>
+
+    </div>
+
+    <!-- build:js assets/scripts/applause.js -->
+    <script src="assets/scripts/vendor/prism.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/showdown/src/showdown.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="assets/scripts/app.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/scripts/controllers/deck.js"></script>
+    <script src="assets/scripts/directives/slide.js"></script>
+    <script src="assets/scripts/directives/fit.js"></script>
+    <script src="assets/scripts/directives/progressbar.js"></script>
+    <script src="assets/scripts/services/appdata.js"></script>
+    <script src="assets/scripts/directives/markdown.js"></script>
+    <script src="assets/scripts/directives/bg-img.js"></script>
+    <script src="assets/scripts/directives/goto.js"></script>
+    <script src="assets/scripts/directives/flip-clock.js"></script>
+    <script src="assets/scripts/directives/prism.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
