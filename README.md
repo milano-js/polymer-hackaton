@@ -1,3 +1,3 @@
-#Codemotion Milan 2014
+#Polymer hackaton
 
-Slides from my talk: __Polymer - lego for the web__
+31/01/2015
